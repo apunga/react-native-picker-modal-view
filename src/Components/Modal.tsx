@@ -1,6 +1,6 @@
 // Global Imports
 import * as React from 'react';
-import { Modal, View, FlatList, KeyboardAvoidingView, NativeSyntheticEvent, NativeScrollEvent, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Modal, View, FlatList, KeyboardAvoidingView, NativeSyntheticEvent, NativeScrollEvent, Platform, SafeAreaView, TouchableOpacity, Animated } from 'react-native';
 // Local Imports
 import { AlphabetComponent, ListItemComponent, SearchComponent, ScrollToTopComponent, SelectBoxComponent } from '@Components';
 import { IModalProps, IModalListInDto, IModalState } from '@Interfaces';
@@ -92,7 +92,7 @@ export class ModalComponent extends React.PureComponent<IModalProps, IModalState
 					onRequestClose={() => onClosed}
 					{...ModalProps}
 				>
-					<SafeAreaView style={{...ModalStyles.container, ...containerStyle}}>
+					<Animated.View style={{...ModalStyles.container, ...containerStyle}}>
 						<SearchComponent
 							searchText={searchPlaceholderText}
 							placeholderTextColor={searchInputTextColor}
@@ -139,7 +139,7 @@ export class ModalComponent extends React.PureComponent<IModalProps, IModalState
 							</View>
 						</KeyboardAvoidingView>
 						<ScrollToTopComponent goToUp={this.scrollToUp.bind(this)} stickyBottomButton={stickyBottomButton} />
-					</SafeAreaView>
+					</Animated.View>
 				</Modal>
 			</React.Fragment >
 		);

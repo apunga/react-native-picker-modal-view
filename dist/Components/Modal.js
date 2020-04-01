@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, View, FlatList, KeyboardAvoidingView, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Modal, View, FlatList, KeyboardAvoidingView, Platform, TouchableOpacity, Animated } from 'react-native';
 import { AlphabetComponent, ListItemComponent, SearchComponent, ScrollToTopComponent, SelectBoxComponent } from './';
 import { ModalStyles, CommonStyle } from '../Assets/Styles';
 import { generateAlphabet, getFilteredData, getIndex } from '../Helpers';
@@ -63,7 +63,7 @@ export class ModalComponent extends React.PureComponent {
         return (React.createElement(React.Fragment, null,
             React.createElement(SelectBoxComponent, { renderSelectView: renderSelectView, items: items, disabled: disabled, selectedObject: selectedObject, chooseText: (selected && selected.Name) ? selected.Name : selectPlaceholderText, openModal: this.openModal.bind(this) }),
             React.createElement(Modal, Object.assign({ animationType: modalAnimationType, visible: modalVisible, onRequestClose: () => onClosed }, ModalProps),
-                React.createElement(SafeAreaView, { style: Object.assign({}, ModalStyles.container, containerStyle) },
+                React.createElement(Animated.View, { style: Object.assign({}, ModalStyles.container, containerStyle) },
                     React.createElement(SearchComponent, Object.assign({ searchText: searchPlaceholderText, placeholderTextColor: searchInputTextColor, onClose: this.onClose.bind(this), onBackRequest: this.onBackRequest.bind(this), forceSelect: requireSelection, setText: (text) => this.setText(text), backButtonDisabled: backButtonDisabled }, SearchInputProps)),
                     React.createElement(KeyboardAvoidingView, { style: ModalStyles.keyboardContainer, behavior: Platform.OS === 'ios' ? 'padding' : null, enabled: true },
                         React.createElement(View, { style: ModalStyles.listArea },
